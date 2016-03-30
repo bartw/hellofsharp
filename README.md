@@ -8,26 +8,26 @@
 
 3. Install Suave
 
-Create paket.dependencies in solution folder:
+	Create paket.dependencies in solution folder:
 
-```
-source https://nuget.org/api/v2
-nuget Suave
-```
+	```
+	source https://nuget.org/api/v2
+	nuget Suave
+	```
 
-Create paket.references in project folder
+	Create paket.references in project folder
 
-```
-Suave
-```
+	```
+	Suave
+	```
 
 4. Create hello world in Program.fs
 
-```fsharp
-open Suave
+	```fsharp
+	open Suave
 
-startWebServer defaultConfig (Successful.OK "Hello World!")
-```
+	startWebServer defaultConfig (Successful.OK "Hello World!")
+	```
 
 5. Browse to http://localhost:8083/
 
@@ -41,34 +41,34 @@ https://github.com/NancyFx/Nancy/wiki/Hosting-Nancy-with-Suave.IO
 
 3. Create sample app in Program.fs
 
-```fsharp
-namespace Suave.NancyFx
+	```fsharp
+	namespace Suave.NancyFx
 
-open Suave
-open Suave.Owin
-open Nancy
-open Nancy.Owin
+	open Suave
+	open Suave.Owin
+	open Nancy
+	open Nancy.Owin
 
-type App() as x =
-  inherit NancyModule()
-  do
-    x.Get.["/"] <- fun _ -> "Hello World, from NancyFx on Suave!" :> obj
-    x.Get.["/fsharp"] <- fun _ -> "I can into F#" :> obj
-    x.Get.["/json"] <- fun _ -> x.Response.AsJson([ "Test" ]) :> obj
-    x.Get.["/complex"] <- fun _ -> 
-      let response = x.Response.AsJson(["This is my Response"])
-      response.ContentType <- "application/json"
-      response.Headers.Add("Funky-Header", "Funky-Header-Value")
-      response :> obj
+	type App() as x =
+	  inherit NancyModule()
+	  do
+		x.Get.["/"] <- fun _ -> "Hello World, from NancyFx on Suave!" :> obj
+		x.Get.["/fsharp"] <- fun _ -> "I can into F#" :> obj
+		x.Get.["/json"] <- fun _ -> x.Response.AsJson([ "Test" ]) :> obj
+		x.Get.["/complex"] <- fun _ -> 
+		  let response = x.Response.AsJson(["This is my Response"])
+		  response.ContentType <- "application/json"
+		  response.Headers.Add("Funky-Header", "Funky-Header-Value")
+		  response :> obj
 
-module Program =
+	module Program =
 
-  [<EntryPoint>]
-  let main argv =
-    let opts = new NancyOptions()
-    let app = OwinApp.ofMidFunc "/" (NancyMiddleware.UseNancy(opts))
-    startWebServer defaultConfig app
-    0
-```
+	  [<EntryPoint>]
+	  let main argv =
+		let opts = new NancyOptions()
+		let app = OwinApp.ofMidFunc "/" (NancyMiddleware.UseNancy(opts))
+		startWebServer defaultConfig app
+		0
+	```
 
 5. Browse to http://localhost:8083/, http://localhost:8083/fsharp, http://localhost:8083/json, http://localhost:8083/complex.
