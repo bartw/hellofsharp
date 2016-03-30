@@ -29,7 +29,7 @@
 	startWebServer defaultConfig (Successful.OK "Hello World!")
 	```
 
-5. Browse to http://localhost:8083/
+5. Browse to <http://localhost:8083/>
 
 ## Nancy
 
@@ -71,4 +71,4 @@ https://github.com/NancyFx/Nancy/wiki/Hosting-Nancy-with-Suave.IO
 		0
 	```
 
-5. Browse to http://localhost:8083/, http://localhost:8083/fsharp, http://localhost:8083/json, http://localhost:8083/complex.
+5. Browse to <http://localhost:8083/>, <http://localhost:8083/fsharp>, <http://localhost:8083/json>, <http://localhost:8083/complex>.
