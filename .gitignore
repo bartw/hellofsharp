@@ -189,3 +189,7 @@ System.Management.Automation.dll
 .fake
 docs/tools/FSharp.Formatting.svclog
 docs/content/paket.exe
+
+#bin and obj folder
+bin
+obj
